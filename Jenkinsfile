@@ -1,34 +1,38 @@
+
 pipeline{
-
     agent any
-
 // uncomment the following lines by removing /* and */ to enable
     tools{
-       nodejs 'nodejs' 
+       nodejs 'Maven 3.6.3' 
     }
     
-
     stages{
         stage('build'){
             steps{
+                echo 'this is the buildjob'
                 sh 'npm install'
+         
             }
         }
         stage('test'){
             steps{
-                sh 'npm test'
+                echo 'this is the test job'
+                sh 'npm'
+         
             }
         }
-        stage('package'){
+        stage(packge'){
             steps{
+                echo 'this is the package job'
                 sh 'npm run package'
+                
             }
         }
     }
     
     post{
         always{
-            echo 'this pipeline is for shopping-portal application...'
+            echo 'this pipeline has completed...'
         }
         
     }
